@@ -8,3 +8,6 @@ My Rust Journey 👨‍💻 : 02 - 06 - 2024<br>
 => Stack vs heap ✅<br>
 => Ownership ✅<br>
 => Borrowing and references ✅<br>
+=> Struct ✅<br>
+=> Enums ✅<br>
+=> Pathern Matching ✅<br>

@@ -173,12 +173,83 @@
 
 // Borrowing and references
 
-fn main(){
-    let mut str: String = String::from("Hello ");
-    update_str(&mut str);
-    print!("{}",str);
+// fn main(){
+//     let mut str: String = String::from("Hello ");
+//     update_str(&mut str);
+//     print!("{}",str);
+// }
+
+// fn update_str(str: &mut String){
+// str.push_str("World");
+// }
+
+// --------------------------------------------------------------------------------
+
+// Struct
+
+// struct User {
+//     active: bool,
+//     username: String,
+//     email: String,
+//     sign_in_count: u64,
+// }
+
+// fn main() {
+//     let user1 = User{
+//         active: true,
+//         username: String::from("Nitin"),
+//         email: String::from("hellonitin@gmail.com"),
+//         sign_in_count:64,
+//     };
+//     println!("User 1 username: {:?} and his email id is: {:?}..he is activated {:?} times and yes it is {:?}" , user1.username, user1.email, user1.sign_in_count, user1.active);
+// }
+
+// ----------------------------------------------------------------------------------
+
+// struct Reac{
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Reac {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// fn main() {
+//     let reac = Reac {
+//         width : 30,
+//         height : 60,
+//     };
+//     println!("Rec area is {:?}", reac.area());
+// }
+
+// ---------------------------------------------------------------------------------
+
+// Pathern Matching
+
+// Define an enum called Shape
+enum Shape {
+    Circle(f64),
+    Square(f64),
+    Rectangle(f64, f64),
 }
 
-fn update_str(str: &mut String){
-str.push_str("World");
+fn calcaulated_shape(shape: Shape) -> f64 {
+    match shape {
+        Shape::Circle(radius) => std::f64::consts::PI * radius * radius,
+        Shape::Square(side_length) => side_length * side_length,
+        Shape::Rectangle(width, height) => width * height,
+    }
+}
+
+fn main() {
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(4.0);
+    let rectangle = Shape::Rectangle(3.0, 6.0);
+
+    println!("Area of Circle {}", calcaulated_shape(circle));
+    println!("Area of square {}", calcaulated_shape(square));
+    println!("Area of rectangle {}", calcaulated_shape(rectangle));
 }
