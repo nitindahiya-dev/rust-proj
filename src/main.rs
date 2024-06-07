@@ -230,26 +230,94 @@
 // Pathern Matching
 
 // Define an enum called Shape
-enum Shape {
-    Circle(f64),
-    Square(f64),
-    Rectangle(f64, f64),
-}
+// enum Shape {
+//     Circle(f64),
+//     Square(f64),
+//     Rectangle(f64, f64),
+// }
 
-fn calcaulated_shape(shape: Shape) -> f64 {
-    match shape {
-        Shape::Circle(radius) => std::f64::consts::PI * radius * radius,
-        Shape::Square(side_length) => side_length * side_length,
-        Shape::Rectangle(width, height) => width * height,
-    }
-}
+// fn calcaulated_shape(shape: Shape) -> f64 {
+//     match shape {
+//         Shape::Circle(radius) => std::f64::consts::PI * radius * radius,
+//         Shape::Square(side_length) => side_length * side_length,
+//         Shape::Rectangle(width, height) => width * height,
+//     }
+// }
 
-fn main() {
-    let circle = Shape::Circle(5.0);
-    let square = Shape::Square(4.0);
-    let rectangle = Shape::Rectangle(3.0, 6.0);
+// fn main() {
+//     let circle = Shape::Circle(5.0);
+//     let square = Shape::Square(4.0);
+//     let rectangle = Shape::Rectangle(3.0, 6.0);
 
-    println!("Area of Circle {}", calcaulated_shape(circle));
-    println!("Area of square {}", calcaulated_shape(square));
-    println!("Area of rectangle {}", calcaulated_shape(rectangle));
-}
+//     println!("Area of Circle {}", calcaulated_shape(circle));
+//     println!("Area of square {}", calcaulated_shape(square));
+//     println!("Area of rectangle {}", calcaulated_shape(rectangle));
+// }
+
+// ---------------------------------------------------------------------------------
+
+// Borrowing
+
+// fn main(){
+//     let mut s1 = String::from("Hello");
+//     {
+//         let s2 = &s1;
+//         println!("Before modification: s1 is {} and s2 is {}", s1, s2);
+//     }
+
+//     {
+//         let s3 = &mut s1;
+//         add_to_main(s3);
+//     }
+
+//     let s2 = &s1; // Reborrow s1 as s2 after modification
+//     println!("After modification: s1 is {} and s2 is {}", s1, s2);
+// }
+
+// fn add_to_main(s3: &mut String){
+//     s3.push_str(" world");
+// }
+
+// -----------------------------------------------------------------------------------
+
+// Array
+
+// fn main() {
+//     let mut arr;
+//     arr = [0,1,2,3,4,5,6];
+//     println!("arr[0] is = {}", arr[0]);
+//     println!("arr = {:?}", arr);
+
+//     arr[1] = 30;
+
+//     println!("arr={:?}", arr);
+
+//     println!("length is {}", arr.len())
+// }
+
+// fn main() {
+//     let arr: [&str; 3] = ["one", "two", "three"];
+//     update_it(arr);
+//     println!("arr={:?}", arr)
+//     }
+    
+//     fn update_it(mut arr1:[&str; 3]) {
+//         arr1[0] = "88";
+//         println!("arr1={:?}", arr1)
+// }
+
+// fn main() {
+//     let mut arr: [&str; 3] = ["one", "two", "three"];
+//     update_it(&mut arr);
+//     println!("arr={:?}", arr)
+//     }
+    
+//     fn update_it( arr1: &mut [&str; 3]) {
+//         arr1[0] = "88";
+//         println!("arr1={:?}", arr1)
+// }
+
+// -------------------------------------------------------------------------------
+
+// vector
+
