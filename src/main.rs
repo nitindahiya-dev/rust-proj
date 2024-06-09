@@ -319,5 +319,48 @@
 
 // -------------------------------------------------------------------------------
 
-// vector
+// match
 
+// fn main() {
+//     let number = 5;
+//     match number {
+//         1=>println!("number is 1"),
+//         2=>println!("number is 2"),
+//         3=>println!("number is 3"),
+//         4=>println!("number is 4"),
+//         5=>println!("number is 5"),
+//         6=>println!("number is 6"),
+//         7=>println!("number is 7"),
+//         _ => println!("number is outside the range 1-7"),
+
+//     }
+// }
+
+
+// fn main() {
+
+//     let number:i8 = 6;
+
+//     fn is_even(num:i8)->bool{
+//          num%2==0
+//         }
+        
+//         match is_even(number) {
+//             true=> print!("Yes it is even number"),
+//             false=> print!("No it isn't even number")
+//         }
+// }
+
+// ------------------------------------------------------------------------------------------------
+
+// input / output
+
+// use std::{self, io};
+
+// fn main() {
+//     let mut input = String::new();
+//     io::stdin()
+//     .read_line(&mut input)
+//     .expect("failed");
+//     println!("User input is: {}", input);
+// }
