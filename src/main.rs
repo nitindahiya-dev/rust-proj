@@ -300,7 +300,7 @@
 //     update_it(arr);
 //     println!("arr={:?}", arr)
 //     }
-    
+
 //     fn update_it(mut arr1:[&str; 3]) {
 //         arr1[0] = "88";
 //         println!("arr1={:?}", arr1)
@@ -311,7 +311,7 @@
 //     update_it(&mut arr);
 //     println!("arr={:?}", arr)
 //     }
-    
+
 //     fn update_it( arr1: &mut [&str; 3]) {
 //         arr1[0] = "88";
 //         println!("arr1={:?}", arr1)
@@ -336,7 +336,6 @@
 //     }
 // }
 
-
 // fn main() {
 
 //     let number:i8 = 6;
@@ -344,7 +343,7 @@
 //     fn is_even(num:i8)->bool{
 //          num%2==0
 //         }
-        
+
 //         match is_even(number) {
 //             true=> print!("Yes it is even number"),
 //             false=> print!("No it isn't even number")
@@ -364,3 +363,225 @@
 //     .expect("failed");
 //     println!("User input is: {}", input);
 // }
+
+// ------------------------------------------------------------------------------------------------
+
+// use rand::prelude::*;
+// use std::io;
+
+// fn guess_checker(selected: &str, random: &str) -> bool {
+//     selected == random
+// }
+
+// fn main() {
+//     let guess_list = ["apple", "banana", "cherry", "date", "elderberry"];
+//     let mut random = thread_rng();
+
+//     let index = random.gen_range(0..guess_list.len());
+//     let random_fruit = guess_list[index];
+
+//     println!(
+//         "Please select from: {}, {}, {}, {}, {}",
+//         guess_list[0], guess_list[1], guess_list[2], guess_list[3], guess_list[4]
+//     );
+
+//     let mut input = String::new();
+//     loop {
+//         input.clear();
+//         println!("Please enter the fruit name: ");
+
+//         match io::stdin().read_line(&mut input) {
+//             Ok(_) => {
+//                 let selected_fruit = input.trim().to_lowercase();
+//                 println!("Fruit Selected: {}", selected_fruit);
+
+//                 if !guess_list.contains(&selected_fruit.as_str()) {
+//                     println!("Fruit entered does not exist, please try again.");
+//                     continue;
+//                 }
+
+//                 if guess_checker(&selected_fruit, random_fruit) {
+//                     println!("You are the winner!");
+//                     break;
+//                 } else {
+//                     println!("Incorrect guess, please try again.");
+//                 }
+//             }
+//             Err(error) => {
+//                 println!("Error: {}", error);
+//             }
+//         }
+//     }
+// }
+
+
+// -------------------------------------------------------------------------------------------
+
+// use rand::prelude::*;
+// use std::io;
+
+// fn main() {
+//     let random_number = thread_rng().gen_range(1..=10);
+//     let mut input = String::new();
+
+//     println!("Guess the number between 1 and 10!");
+
+//     loop {
+//         input.clear();
+//         println!("Please enter your guess: ");
+
+//         match io::stdin().read_line(&mut input) {
+//             Ok(_) => {
+//                 let guess: i32 = match input.trim().parse() {
+//                     Ok(num) => num,
+//                     Err(_) => {
+//                         println!("Please enter a valid number.");
+//                         continue;
+//                     }
+//                 };
+
+//                 if guess == random_number {
+//                     println!("Congratulations, you guessed the right number!");
+//                     break;
+//                 } else {
+//                     println!("Incorrect guess, please try again.");
+//                 }
+//             }
+//             Err(error) => {
+//                 println!("Error: {}", error);
+//             }
+//         }
+//     }
+// }
+
+
+// -------------------------------------------------------------------------------------------
+
+// use rand::prelude::*;
+// use std::io;
+
+// fn main() {
+//     let color_list = ["red", "blue", "green", "yellow", "orange"];
+//     let mut random = thread_rng();
+
+//     let index = random.gen_range(0..color_list.len());
+//     let random_color = color_list[index];
+
+//     println!(
+//         "Please select from: {}, {}, {}, {}, {}",
+//         color_list[0], color_list[1], color_list[2], color_list[3], color_list[4]
+//     );
+
+//     let mut input = String::new();
+//     loop {
+//         input.clear();
+//         println!("Please enter the color name: ");
+
+//         match io::stdin().read_line(&mut input) {
+//             Ok(_) => {
+//                 let selected_color = input.trim().to_lowercase();
+//                 println!("Color Selected: {}", selected_color);
+
+//                 if !color_list.contains(&selected_color.as_str()) {
+//                     println!("Color entered does not exist, please try again.");
+//                     continue;
+//                 }
+
+//                 if selected_color == random_color {
+//                     println!("You are the winner!");
+//                     break;
+//                 } else {
+//                     println!("Incorrect guess, please try again.");
+//                 }
+//             }
+//             Err(error) => {
+//                 println!("Error: {}", error);
+//             }
+//         }
+//     }
+// }
+
+// -------------------------------------------------------------------------------------------------
+
+// use rand::prelude::*;
+// use std::io;
+
+// fn main() {
+//     let animal_list = ["cat", "dog", "lion", "tiger", "elephant"];
+//     let mut random = thread_rng();
+
+//     let index = random.gen_range(0..animal_list.len());
+//     let random_animal = animal_list[index];
+
+//     println!(
+//         "Please select from: {}, {}, {}, {}, {}",
+//         animal_list[0], animal_list[1], animal_list[2], animal_list[3], animal_list[4]
+//     );
+
+//     let mut input = String::new();
+//     loop {
+//         input.clear();
+//         println!("Please enter the animal name: ");
+
+//         match io::stdin().read_line(&mut input) {
+//             Ok(_) => {
+//                 let selected_animal = input.trim().to_lowercase();
+//                 println!("Animal Selected: {}", selected_animal);
+
+//                 if !animal_list.contains(&selected_animal.as_str()) {
+//                     println!("Animal entered does not exist, please try again.");
+//                     continue;
+//                 }
+
+//                 if selected_animal == random_animal {
+//                     println!("You are the winner!");
+//                     break;
+//                 } else {
+//                     println!("Incorrect guess, please try again.");
+//                 }
+//             }
+//             Err(error) => {
+//                 println!("Error: {}", error);
+//             }
+//         }
+//     }
+// }
+
+// ----------------------------------------------------------------------------
+
+
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io; // Import io module from standard library
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100); // Generate a random number between 1 and 100 (inclusive)
+
+    println!("The secret number is: {}", secret_number);
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    
+    let guess: u32 = match guess.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter a valid number!");
+            return; // Exit the program if parsing fails
+        }
+    };
+
+    println!("You guessed: {}", guess);
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
+}
