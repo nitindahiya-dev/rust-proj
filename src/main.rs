@@ -550,38 +550,136 @@
 // ----------------------------------------------------------------------------
 
 
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io; // Import io module from standard library
+// use rand::Rng;
+// use std::cmp::Ordering;
+// use std::io; // Import io module from standard library
 
-fn main() {
-    println!("Guess the number!");
+// fn main() {
+//     println!("Guess the number!");
 
-    let secret_number = rand::thread_rng().gen_range(1..=100); // Generate a random number between 1 and 100 (inclusive)
+//     let secret_number = rand::thread_rng().gen_range(1..=100); // Generate a random number between 1 and 100 (inclusive)
 
-    println!("The secret number is: {}", secret_number);
-    println!("Please input your guess.");
+//     println!("The secret number is: {}", secret_number);
+//     println!("Please input your guess.");
 
-    let mut guess = String::new();
+//     let mut guess = String::new();
 
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+//     io::stdin()
+//         .read_line(&mut guess)
+//         .expect("Failed to read line");
 
     
-    let guess: u32 = match guess.trim().parse() {
-        Ok(num) => num,
-        Err(_) => {
-            println!("Please enter a valid number!");
-            return; // Exit the program if parsing fails
-        }
-    };
+//     let guess: u32 = match guess.trim().parse() {
+//         Ok(num) => num,
+//         Err(_) => {
+//             println!("Please enter a valid number!");
+//             return; // Exit the program if parsing fails
+//         }
+//     };
 
-    println!("You guessed: {}", guess);
+//     println!("You guessed: {}", guess);
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
-    }
+//     match guess.cmp(&secret_number) {
+//         Ordering::Less => println!("Too small!"),
+//         Ordering::Greater => println!("Too big!"),
+//         Ordering::Equal => println!("You win!"),
+//     }
+// }
+
+// -------------------------------------------------------------------------------------------
+
+//  convert Celsius to Fahrenheit !!
+
+// use std::io;
+
+// fn main() {
+//     let mut user_input = String::new();
+
+//     io::stdin().read_line(&mut user_input).expect("Fialed to read user input");
+
+//     let  celsius:f64 = user_input.trim().parse().expect("failed to enter valid number");
+
+//     let  fahrenheit= celsius * 9.0/5.0 + 9.0;
+
+//     println!("Fahrenheit is : {}" ,fahrenheit );
+// }
+
+// ------------------------------------------------------------------------------------------
+
+// struct User {
+//     active: bool,
+//     username: String,
+//     email: String,
+//     sign_in_count: u64,
+// }
+
+// fn main() {
+//     let mut user1 = User{
+//         active: true,
+//         username: String::from("user1"),
+//         email:String::from("email1@gmail.com"),
+//         sign_in_count: 1,
+//     };
+
+//     user1.email = String::from("email11@gmail.com");
+
+//     let user2 = User{
+//         active:false,
+//         email: String::from("email2@gmail.com"),
+//         ..user1
+//     };
+
+//     println!("User1 email address is : {}", user1.email);
+//     println!("User1 email address is : {}", user2.email);
+// }
+
+// --------------------------------------------------------------------------------------------
+
+// struct Rectangle {
+//     width: u32,
+//     height:  u32,
+// }
+
+// fn main() {
+//     let reac1 = Rectangle {
+//         width: 32,
+//         height: 65,
+//     };
+//     println!("Area of reactangle is: {:?}", area(&reac1));
+// }
+
+// fn area(rectangle: &Rectangle) -> u32 {
+//     rectangle.width * rectangle.height
+// }
+
+// -----------------------------------------------------------------------------------------------------------------
+
+// diff between struck and enums
+
+// Let's consider IP addresses, which can be either IPv4 or IPv6. Using structs to represent this would require multiple structs and additional logic to manage the different types:
+
+struct Ipv4Addr {
+    address: String,
 }
+
+struct Ipv6Addr {
+    address: String,
+}
+
+let home = IpAddr::V4(Ipv4Addr {
+    address: String::from("127.0.0.1"),
+});
+
+let loopback = IpAddr::V6(Ipv6Addr {
+    address: String::from("::1"),
+});
+
+// emun 
+
+enum IpAddr {
+    V4(String),
+    V6(String),
+}
+
+let home = IpAddr::V4(String::from("127.0.0.1"));
+let loopback = IpAddr::V6(String::from("::1"));
