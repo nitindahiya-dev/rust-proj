@@ -414,7 +414,6 @@
 //     }
 // }
 
-
 // -------------------------------------------------------------------------------------------
 
 // use rand::prelude::*;
@@ -453,7 +452,6 @@
 //         }
 //     }
 // }
-
 
 // -------------------------------------------------------------------------------------------
 
@@ -549,7 +547,6 @@
 
 // ----------------------------------------------------------------------------
 
-
 // use rand::Rng;
 // use std::cmp::Ordering;
 // use std::io; // Import io module from standard library
@@ -568,7 +565,6 @@
 //         .read_line(&mut guess)
 //         .expect("Failed to read line");
 
-    
 //     let guess: u32 = match guess.trim().parse() {
 //         Ok(num) => num,
 //         Err(_) => {
@@ -658,28 +654,68 @@
 
 // Let's consider IP addresses, which can be either IPv4 or IPv6. Using structs to represent this would require multiple structs and additional logic to manage the different types:
 
-struct Ipv4Addr {
-    address: String,
+// struct Ipv4Addr {
+//     address: String,
+// }
+
+// struct Ipv6Addr {
+//     address: String,
+// }
+
+// let home = IpAddr::V4(Ipv4Addr {
+//     address: String::from("127.0.0.1"),
+// });
+
+// let loopback = IpAddr::V6(Ipv6Addr {
+//     address: String::from("::1"),
+// });
+
+// emun
+
+// enum IpAddr {
+//     V4(String),
+//     V6(String),
+// }
+
+// let home = IpAddr::V4(String::from("127.0.0.1"));
+// let loopback = IpAddr::V6(String::from("::1"));
+
+// -----------------------------------------------------------------------------------
+
+// match usage
+
+// enum State {
+//     Water,
+//     Wind,
+//     Rock
+// }
+
+// fn mainly(state: State) -> String {
+//     match state {
+//         State::Wind => {
+//             String::from("air")
+//     },
+//         State::Rock => String::from("solid"),
+//         State::Water => String::from("liquid"),
+//     }
+// }
+
+// fn main() {
+//     println!("State of Wind is: {}", mainly(State::Wind));
+//     println!("State of Rock is: {}", mainly(State::Rock));
+//     println!("State of Water is: {}", mainly(State::Water));
+// }
+
+// ------------------------------------------------------------------------------------
+
+// match dice usage
+// fn main() {
+// -----------------------------------------------------------------------------
+
+fn main() {
+    let max_num = Some(9);
+
+    if let Some(_max) = max_num {
+        println!("I am max num")
+    }
 }
-
-struct Ipv6Addr {
-    address: String,
-}
-
-let home = IpAddr::V4(Ipv4Addr {
-    address: String::from("127.0.0.1"),
-});
-
-let loopback = IpAddr::V6(Ipv6Addr {
-    address: String::from("::1"),
-});
-
-// emun 
-
-enum IpAddr {
-    V4(String),
-    V6(String),
-}
-
-let home = IpAddr::V4(String::from("127.0.0.1"));
-let loopback = IpAddr::V6(String::from("::1"));
