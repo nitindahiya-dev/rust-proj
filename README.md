@@ -12,3 +12,4 @@ My Rust Journey 👨‍💻 : 02 - 06 - 2024<br>
 => Enums ✅<br>
 => Pathern Matching ✅<br>
 => I/O ✅<br>
+=> Generic Types, Traits, and Lifetimes ✅<br>
