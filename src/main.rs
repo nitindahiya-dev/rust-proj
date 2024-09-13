@@ -744,7 +744,6 @@
 //     println!("The largest char is {result}");
 // }
 
-
 // Lifetimes
 
 // fn main() {
@@ -758,3 +757,102 @@
 // fn longest<'a>(x: &'a str, _y: &str) -> &'a str {
 //     x
 // }
+
+//
+
+// -----------------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let num = 11;
+//     if num % 2 == 0 {
+//         return println!("Yes {num} is even number");
+//     }
+//     return print!("No {num} is not a even number" );
+// }
+
+// other way
+
+// use core::num;
+
+// fn main() {
+//     println!("{}", is_even(10));
+// }
+
+// fn is_even(num: i32) -> bool {
+//     if num%2 == 0 {
+//         return true;
+//     }
+//     return false;
+// }
+
+// ----------------------------------------------------------------------------------------------------
+
+// Q: Create fibbonacci series for n times ?
+
+// fn main() {
+//     let num = 10;
+//     print!("\n");
+//     println!("\nSum of Fibonacci series for {} terms is: {}", num, fibo(num));
+// }
+
+// fn fibo(num: u64) -> u64 {
+//     let mut sum = 0;
+//     let mut a = 0;
+//     let mut b = 1;
+
+//     for _ in 0..num {
+//         print!("{} ", a);
+//         sum+= a;
+//         let next = a + b;
+//         a = b;
+//         b = next;
+//     }
+//     sum
+// }
+
+// -----------------------------------------------------------------------------------------------
+
+// Q: Find the x number in fiboacci series?
+// fn main() {
+//     let num = 10;
+//     println!("Fibonacci series up to {} terms:", num);
+//     let series = fibo_series(num);
+
+//     println!("\nSum of Fibonacci series is: {}", series.0);
+//     println!("{}", avai(num, &series.1));
+// }
+
+// fn fibo_series(num: u64) -> (u64, Vec<u64>) {
+//     let mut sum = 0;
+//     let mut a = 0;
+//     let mut b = 1;
+//     let mut series = Vec::new();
+
+//     for _ in 0..num {
+//         series.push(a);
+//         print!("{} ", a);
+//         sum += a;
+//         let next = a + b;
+//         a = b;
+//         b = next;
+//     }
+//     (sum, series)
+// }
+
+// fn avai(num: u64, series: &[u64]) -> String {
+//     if series.contains(&num) {
+//         format!("{} is present in the series", num)
+//     } else {
+//         format!("{} is not present in the series", num)
+//     }
+// }
+
+// ----------------------------------------------------------------------------------------------------------
+
+// Q: Find the size of the string?
+
+fn main() {
+    let str = String::from("Hello     World");
+    println!("Size of string in bytes is: {}", str.len());
+    println!("Number of characters is: {}", str.chars().count());
+}
