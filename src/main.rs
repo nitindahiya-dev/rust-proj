@@ -851,8 +851,115 @@
 
 // Q: Find the size of the string?
 
-fn main() {
-    let str = String::from("Hello     World");
-    println!("Size of string in bytes is: {}", str.len());
-    println!("Number of characters is: {}", str.chars().count());
+// fn main() {
+//     let str = String::from("Hello     World");
+//     println!("Size of string in bytes is: {}", str.len());
+//     println!("Number of characters is: {}", str.chars().count());
+// }
+
+// -----------------------------------------------------------------------------------------------------------
+
+// Q: User of Struct ?
+
+// struct Rect {
+//     height: u32,
+//     width: u32,
+// }
+
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// impl Rect {
+//     fn para(&self) -> u32 {
+//         2*(self.height + self.width)
+//     }
+// }
+
+// fn main() {
+//     let reac = Rect{
+//         height : 32,
+//         width : 66,
+//     };
+
+//     println!("parameter of reactangle is {}", reac.para());
+
+//     println!("area of rectangle is {}", reac.area())
+// }
+
+// ----------------------------------------------------------------------------------------------------------
+
+// struct Num{
+//     num1: u32,
+//     num2: u32,
+// }
+
+// impl Num {
+//     fn add(&self) -> u32 {
+//         self.num1 + self.num2
+//     }
+//     fn sub(&self) -> u32 {
+//         self.num1 - self.num2
+//     }
+//     fn mult(&self) -> u32 {
+//         self.num1 * self.num2
+//     }
+//     fn divide(&self) -> u32 {
+//         self.num1 / self.num2
+//     }
+// }
+
+// fn main() {
+//     let value = Num{
+//         num1 : 19,
+//         num2: 19,
+//     };
+
+//     println!("The Sum of {} and {} is {}", value.num1, value.num2, value.add());
+//     println!("The Sum of {} and {} is {}", value.num1, value.num2, value.sub());
+//     println!("The Sum of {} and {} is {}", value.num1, value.num2, value.mult());
+//     println!("The Sum of {} and {} is {}", value.num1, value.num2, value.divide());
+// }
+
+// ---------------------------------------------------------------------------------------------------------
+
+// Q: Option Enum...!!!
+
+// fn main() {
+//     let index = find_a(String::from("Nitin"));
+
+//     match index {
+//         Some(value) => println!("index is {}", value),
+//         None => println!("Index value of a not found"),
+//     }
+// }
+
+// fn find_a(str: String) -> Option<i32>{
+//     for(index, char) in str.chars().enumerate(){
+//         if char == 'a' {
+//             return Some(index as i32);
+//         }
+//     }
+//     return None;
+// }
+
+// ------------------------------------------------------------------------------------------------------------
+
+// Q: read content of the file ?
+
+use std::fs;
+
+fn main(){
+    let file = fs::read_to_string("ddd.txt");
+
+    match file {
+        Ok(file_content) => {
+            println!("Content of file is {}", file_content);
+        },
+        Err(error) => {
+            println!("{}", error);
+        }
+    }
 }
