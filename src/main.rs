@@ -949,17 +949,80 @@
 
 // Q: read content of the file ?
 
-use std::fs;
+// use std::fs;
 
-fn main(){
-    let file = fs::read_to_string("ddd.txt");
+// fn main(){
+//     let file = fs::read_to_string("ddd.txt");
 
-    match file {
-        Ok(file_content) => {
-            println!("Content of file is {}", file_content);
-        },
-        Err(error) => {
-            println!("{}", error);
-        }
+//     match file {
+//         Ok(file_content) => {
+//             println!("Content of file is {}", file_content);
+//         },
+//         Err(error) => {
+//             println!("{}", error);
+//         }
+//     }
+// }
+
+// ----------------------------------------------------------------------------------------------------------
+
+// Q: Vectors !!!!!!
+
+// fn main() {
+//     let mut vec = Vec::new();
+//     for i in 0..10 {
+//             vec.push(i);
+//     }
+//     println!("{:?}", vec);
+//     println!("Print even {:?}", is_even(&vec));
+// }
+
+// fn is_even(vec: &Vec<i32>) -> Vec<i32> {
+//     let mut even_vec = Vec::new();
+//     for i in 0..vec.len()  {
+//         if i%2 == 0 {
+//             even_vec.push(vec[i]);
+//         }
+//     }
+//     even_vec
+// }
+
+// ------------------------------------------------------------------------------------------------------------
+
+// Q: HashMap ...!!!!
+// use std::collections::HashMap;
+
+// fn main() {
+//     let mut hash = HashMap::new();
+
+//     // Inserting key-value pairs into the HashMap
+//     hash.insert(String::from("Nitin"), 99);
+//     hash.insert(String::from("Niki"), 99);
+
+//     // Retrieving a value from the HashMap
+//     match hash.get("Nitin") {
+//         Some(&value) => println!("Value for Nitin: {}", value),
+//         None => println!("No value found for Nitin"),
+//     }
+// }
+
+// ----------------------------------------------------------------------------------------------------
+
+use std::{collections::{btree_map::Keys, HashMap}, vec};
+
+fn group(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
+    let mut hm = HashMap::new();
+
+    for (key, value) in vec {
+        hm.insert(key, value);
     }
+    return hm;
+}
+
+fn main() {
+    let input_vec = vec![(String::from("Niti"), 99),(String::from("Niui"), 99),(String::from("Nivi"), 99)];
+
+    let hm = group(input_vec);
+
+    println!("{:?}", hm);
 }
