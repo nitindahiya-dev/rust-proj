@@ -1008,21 +1008,108 @@
 
 // ----------------------------------------------------------------------------------------------------
 
-use std::{collections::{btree_map::Keys, HashMap}, vec};
+// use std::{collections::HashMap, vec};
 
-fn group(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
-    let mut hm = HashMap::new();
+// fn group(vec: Vec<(String, i32)>) -> HashMap<String, i32> {
+//     let mut hm = HashMap::new();
 
-    for (key, value) in vec {
-        hm.insert(key, value);
-    }
-    return hm;
-}
+//     for (key, value) in vec {
+//         hm.insert(key, value);
+//     }
+//     return hm;
+// }
+
+// fn main() {
+//     let input_vec = vec![(String::from("Niti"), 99),(String::from("Niui"), 99),(String::from("Nivi"), 99)];
+
+//     let hm = group(input_vec);
+
+//     println!("{:?}", hm);
+// }
+
+// --------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------------------------
+// fn main(){
+//     let v1 = vec![1,3,2];
+
+//     let v1_iter = v1.iter();
+
+//     for val in v1_iter  {
+//         println!("Got : {val}")
+//     }
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main(){
+//     let mut v = vec![1,2,3];
+
+//     let  itr = v.iter_mut();
+
+//     for val in itr  {
+//         *val = *val + 1;
+//         println!("Got : {}", val);
+// }}
+
+// --------------------------------------------------------------------------------------------------------
+
+
+// fn main() {
+//     let mut v = vec![1,2,3];
+//     let mut itr = v.iter_mut();
+//     while let Some(val) = itr.next() {
+//         *val = *val + 99;
+//         println!("Got : {}", val);
+//     }
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+
+// fn main() {
+//     let v1 = vec![1,2,3];
+
+//     let itr = v1.iter();
+
+//     let sum:i32 = itr.sum();
+
+//     println!("Sum is {}", sum);
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let v = vec![1,2,3];
+//     let itr = v.iter();
+
+//     let itr2 = itr.map(|x| x + 1);
+
+//     for x in itr2 {
+//         println!("values are : {}", x);
+//     }
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let v = vec![1,2,3];
+//     let itr = v.iter();
+
+//     let filter = itr.filter(|x| *x/3 == 1);
+
+//     for a in filter  {
+//         println!("x divide by 3 is : {}", a);
+//     }
+// }
+
+// --------------------------------------------------------------------------------------------------------
 
 fn main() {
-    let input_vec = vec![(String::from("Niti"), 99),(String::from("Niui"), 99),(String::from("Nivi"), 99)];
-
-    let hm = group(input_vec);
-
-    println!("{:?}", hm);
+    let values = vec![1,2,3,4,5,6,7,8,9,10];
+    let itr = values.iter().filter(|x| *x%2 != 0).map(|x| x*2);
+    
+    let ans:Vec<i32> = itr.collect();
+    println!("All the Odd values are : {:?}", ans);
 }

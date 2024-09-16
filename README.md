@@ -13,4 +13,5 @@ My Rust Journey 👨‍💻 : 02 - 06 - 2024<br>
 => Pathern Matching ✅<br>
 => I/O ✅<br>
 => Vector and HashMap ✅<br>
+=> Iterators ✅<br>
 => Generic Types, Traits, and Lifetimes ✅<br>
