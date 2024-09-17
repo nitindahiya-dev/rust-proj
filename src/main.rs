@@ -1055,7 +1055,6 @@
 
 // --------------------------------------------------------------------------------------------------------
 
-
 // fn main() {
 //     let mut v = vec![1,2,3];
 //     let mut itr = v.iter_mut();
@@ -1066,7 +1065,6 @@
 // }
 
 // --------------------------------------------------------------------------------------------------------
-
 
 // fn main() {
 //     let v1 = vec![1,2,3];
@@ -1106,10 +1104,79 @@
 
 // --------------------------------------------------------------------------------------------------------
 
+// fn main() {
+//     let values = vec![1,2,3,4,5,6,7,8,9,10];
+//     let itr = values.iter().filter(|x| *x%2 != 0).map(|x| x*2);
+
+//     let ans:Vec<i32> = itr.collect();
+//     println!("All the Odd values are : {:?}", ans);
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main(){
+//     let mut _name = String::from("Nitin");
+//     _name.push_str( " Dahiya");
+//     println!("Name : {}", _name);
+//     _name.replace_range(0.._name.len(), " ");
+//     println!("Name : {}", _name);
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main(){
+//     let mut _name = String::from("Nitin Dahiya");
+//     let ans = first_word(_name);
+//     println!("ans is {}", ans);
+// }
+
+// fn first_word(str: String) -> String {
+//     let mut ans = String::from("");
+//     for i in str.chars(){
+//         if i == ' ' {
+//             break;
+//         }
+//         ans.push_str(&i.to_string());
+//     }
+//     return  ans;
+// }
+
+// --------------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let mut _name = String::from("value valeu");
+
+//     let ans = first_word(&_name);
+//     println!("Ans is {}", ans);
+// }
+
+// fn first_word(str: &String) -> &str {
+//     let mut index = 0;
+//     for i in str.chars() {
+//         if i == ' ' {
+//             break;
+//         }
+//         index = index + 1;
+//     }
+//     return &str[0..index];
+// }
+
+
+// --------------------------------------------------------------------------------------------------------
+// Generic
+
 fn main() {
-    let values = vec![1,2,3,4,5,6,7,8,9,10];
-    let itr = values.iter().filter(|x| *x%2 != 0).map(|x| x*2);
-    
-    let ans:Vec<i32> = itr.collect();
-    println!("All the Odd values are : {:?}", ans);
+    let biggest = largest(1,2);
+    let biggest_char = largest('a','b');
+
+    println!("{}", biggest);
+    println!("{}", biggest_char)
+}
+
+fn largest<T: std::cmp::PartialOrd>(a: T, b:T) -> T {
+    if a>b{
+        a
+    } else {
+        b
+    }
 }
