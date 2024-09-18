@@ -15,4 +15,5 @@ My Rust Journey 👨‍💻 : 02 - 06 - 2024<br>
 => Vector and HashMap ✅<br>
 => Iterators ✅<br>
 => String & Slice ✅<br>
+=> Traits ✅<br>
 => Generic Types, Traits, and Lifetimes ✅<br>

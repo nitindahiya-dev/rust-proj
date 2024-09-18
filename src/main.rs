@@ -1165,18 +1165,134 @@
 // --------------------------------------------------------------------------------------------------------
 // Generic
 
-fn main() {
-    let biggest = largest(1,2);
-    let biggest_char = largest('a','b');
+// fn main() {
+//     let biggest = largest(1,2);
+//     let biggest_char = largest('a','b');
 
-    println!("{}", biggest);
-    println!("{}", biggest_char)
+//     println!("{}", biggest);
+//     println!("{}", biggest_char)
+// }
+
+// fn largest<T: std::cmp::PartialOrd>(a: T, b:T) -> T {
+//     if a>b{
+//         a
+//     } else {
+//         b
+//     }
+// }
+
+// ------------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let num_list = vec![1, 2, 9, 4, 5, 6];
+//     let char_list = vec!['a','b','c','d','e','f','g'];
+
+//     // Call the largest function
+//     let result_num = largest(&num_list);
+//     let result_char = largest(&char_list);
+    
+//     println!("Print the largest value: {}", result_num);
+//     println!("Print the largest value: {}", result_char);
+// }
+
+// fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+//     let mut largest = &list[0];  // Start with the first element
+    
+//     for num in list {
+//         if num > largest {
+//             largest = num;  // Update the largest number if a bigger one is found
+//         }
+//     }
+    
+//     *largest  // Dereference largest to return the actual value
+// }
+
+// -----------------------------------------------------------------------------------------------------
+
+// Trait
+// pub trait Summerize {
+//     fn summerize(&self) -> String;
+// }
+
+// struct User{
+//     _name: String,
+//     age : u64,
+// }
+
+// impl Summerize for User {
+//     fn summerize(&self) -> String {
+//         return format!("\nUser {} is {} years old", self._name, self.age);
+//     }
+// }
+
+// fn main() {
+//     let user = User{
+//         _name : String::from("Nitin"),
+//         age: 201,
+//     };
+//     println!("User Data is {}", user.summerize());
+// }
+
+// ----------------------------------------------------------------------------------------------------
+
+// pub trait Summary {
+//     fn summerize(&self) -> String;
+// }
+
+// struct User{
+//     _name: String,
+//     age : u64,
+// }
+
+// impl Summary for User {
+//     fn summerize (&self) -> String {
+//         format!("{}, {}",self._name, self.age )
+//     }
+// }
+
+// pub fn notify(item: &impl Summary){
+//     println!("Breaking News : {}", item.summerize());
+// }
+
+// fn main() {
+//     let user = User {
+//         _name : String::from("Nitin"),
+//         age: 202,
+//     };
+
+//     println!("{}, {}", user._name, user.age);
+// notify(&user);
+    
+// }
+
+// ------------------------------------------------------------------------------------------------------------
+
+pub trait Summary {
+    fn summerize(&self) -> String;
 }
 
-fn largest<T: std::cmp::PartialOrd>(a: T, b:T) -> T {
-    if a>b{
-        a
-    } else {
-        b
+pub struct NewsArticle {
+    pub headline : String,
+    pub location : String,
+    pub author : String,
+    pub content : String,
+}
+
+impl Summary for NewsArticle{
+    fn summerize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+pub struct Tweet {
+    pub username : String,
+    pub content : String,
+    pub reply : bool,
+    pub retweet : bool,
+}
+
+impl Summary for Tweet {
+    fn summerize(&self) -> String {
+        format!("{} : {}", self.username, self.content)
     }
 }
