@@ -1161,7 +1161,6 @@
 //     return &str[0..index];
 // }
 
-
 // --------------------------------------------------------------------------------------------------------
 // Generic
 
@@ -1190,20 +1189,20 @@
 //     // Call the largest function
 //     let result_num = largest(&num_list);
 //     let result_char = largest(&char_list);
-    
+
 //     println!("Print the largest value: {}", result_num);
 //     println!("Print the largest value: {}", result_char);
 // }
 
 // fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
 //     let mut largest = &list[0];  // Start with the first element
-    
+
 //     for num in list {
 //         if num > largest {
 //             largest = num;  // Update the largest number if a bigger one is found
 //         }
 //     }
-    
+
 //     *largest  // Dereference largest to return the actual value
 // }
 
@@ -1262,37 +1261,175 @@
 
 //     println!("{}, {}", user._name, user.age);
 // notify(&user);
-    
+
 // }
 
 // ------------------------------------------------------------------------------------------------------------
 
-pub trait Summary {
-    fn summerize(&self) -> String;
-}
+// pub trait Summary {
+//     fn summarize(&self) -> String;  // Fixed method name
+// }
 
-pub struct NewsArticle {
-    pub headline : String,
-    pub location : String,
-    pub author : String,
-    pub content : String,
-}
+// pub struct NewsArticle {
+//     pub headline: String,
+//     pub location: String,
+//     pub author: String,
+//     pub content: String,
+// }
 
-impl Summary for NewsArticle{
-    fn summerize(&self) -> String {
-        format!("{}, by {} ({})", self.headline, self.author, self.location)
+// impl Summary for NewsArticle {
+//     fn summarize(&self) -> String {  // Fixed method name
+//         format!("{}, by {} ({})", self.headline, self.author, self.location)
+//     }
+// }
+
+// pub struct Tweet {
+//     pub username: String,
+//     pub content: String,
+//     pub reply: bool,
+//     pub retweet: bool,
+// }
+
+// impl Summary for Tweet {
+//     fn summarize(&self) -> String {  // Fixed method name
+//         format!("{}: {}", self.username, self.content)
+//     }
+// }
+
+// fn main() {
+//     let article = NewsArticle {
+//         headline: String::from("Breaking News"),
+//         location: String::from("New York"),
+//         author: String::from("John Doe"),
+//         content: String::from("Details about the event..."),
+//     };
+
+//     let tweet = Tweet {
+//         username: String::from("@user"),
+//         content: String::from("Hello, Twitter!"),
+//         reply: false,
+//         retweet: false,
+//     };
+
+//     println!("Article Summary: {}", article.summarize());
+//     println!("Tweet Summary: {}", tweet.summarize());
+// }
+
+// --------------------------------------------------------------------------------------------------
+
+// fn main() {
+//     let str_one = String::from("My name is");
+//     let str_two = String::from("Nitin");
+
+//     let ans = longest(&str_one, &str_two);
+//     println!("The longest string is: {}", ans);
+// }
+
+// fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {  // Lifetime annotations added
+//     if a.len() > b.len() {
+//         println!("'{}' is the longer string", a);
+//         a  // Return the longer string
+//     } else {
+//         println!("'{}' is the longer string", b);
+//         b  // Return the longer string
+//     }
+// }
+
+// -----------------------------------------------------------------------------------------------------
+
+// struct User<'a>{
+//     ffname: &'a str,
+//     llname: &'a str
+// }
+
+// fn main() {
+//     let f_name = String::from("Nitin");
+//     let l_name = String::from("Dahiya");
+//     let user = User { ffname: &f_name, llname: &l_name };
+
+//     println!("The First Name of user is {}", user.ffname);
+//     println!("The Last Name of user is {}", user.llname);
+// }
+
+
+// -----------------------------------------------------------------------------------------------------
+
+// use std::thread;
+// use std::time::Duration;
+
+// fn main() {
+//     let _sum = 0;
+//     let handle = thread::spawn(|| {
+//         for i in 1..10  {
+//             println!("hi number {i} from spawn thread!");
+//             thread::sleep(Duration::from_secs(1));
+//         }
+//     });
+
+//     handle.join().unwrap();
+    
+//     for i in 1..5  {
+//         println!("Hi number {i} from main thread");
+//         thread::sleep(Duration::from_secs(1));
+//     }
+// }
+
+// ---------------------------------------------------------------------------------------------------------
+
+// use std::thread;
+
+// fn main() {
+//     let vec = vec![1,2,3];
+//     let handle = thread::spawn(move || {
+//         println!("vec : {:?}", vec);
+//     });
+
+//     handle.join().unwrap();
+// }
+
+// ---------------------------------------------------------------------------------------------------
+
+// use std::sync::mpsc;
+// use std::thread;
+
+// fn main() {
+//     let (tx, rx) = mpsc::channel();
+
+//     thread::spawn(move || {
+//         let val = String::from("Hiiiiiiiiiiii........!!!");
+//         tx.send(val).unwrap();
+//     });
+
+//     let recieved = rx.recv().unwrap();
+//     println!("Got it: {recieved}");
+// }
+
+// ------------------------------------------------------------------------------------------------------
+
+use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    // Spawn multiple producer threads
+    for i in 0..10 {
+        let producer = tx.clone();
+        thread::spawn(move || {
+            let mut ans: u64 = 0;  // Use u64 to avoid overflow
+            for j in 0..100_000 {
+                ans = ans + (i * 100_000 + j) as u64;  // Cast to u64
+            }
+            producer.send(ans).unwrap();  // Send the result to the channel
+        });
     }
-}
-
-pub struct Tweet {
-    pub username : String,
-    pub content : String,
-    pub reply : bool,
-    pub retweet : bool,
-}
-
-impl Summary for Tweet {
-    fn summerize(&self) -> String {
-        format!("{} : {}", self.username, self.content)
+drop(tx);
+    // Collect and sum the results from all producer threads
+    let mut total_ans: u64 = 0;  // Use u64 for the final result as well
+    for val in rx {
+        total_ans = total_ans + val;
+        println!("val found: {}", val);
     }
+
+    println!("Ans is {}", total_ans);
 }

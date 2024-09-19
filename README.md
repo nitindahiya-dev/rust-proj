@@ -17,3 +17,4 @@ My Rust Journey 👨‍💻 : 02 - 06 - 2024<br>
 => String & Slice ✅<br>
 => Traits ✅<br>
 => Generic Types, Traits, and Lifetimes ✅<br>
+=> Message Passing ✅<br>
