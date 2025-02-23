@@ -1,3 +1,21 @@
+use prac::mainly;
+
+
+
+mod prac;
+
+fn main() {
+    mainly();
+}
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------
 // fn main(){
 //     let x: i8= 8;
 //     let y = String::from("Heyy..!!");
@@ -1406,30 +1424,33 @@
 
 // ------------------------------------------------------------------------------------------------------
 
-use std::sync::mpsc;
-use std::thread;
+// use std::sync::mpsc;
+// use std::thread;
 
-fn main() {
-    let (tx, rx) = mpsc::channel();
+// fn main() {
+    //     let (tx, rx) = mpsc::channel();
+    
+    //     // Spawn multiple producer threads
+    //     for i in 0..10 {
+        //         let producer = tx.clone();
+        //         thread::spawn(move || {
+            //             let mut ans: u64 = 0;  // Use u64 to avoid overflow
+            //             for j in 0..100_000 {
+                //                 ans = ans + (i * 100_000 + j) as u64;  // Cast to u64
+                //             }
+                //             producer.send(ans).unwrap();  // Send the result to the channel
+                //         });
+                //     }
+                // drop(tx);
+                //     // Collect and sum the results from all producer threads
+                //     let mut total_ans: u64 = 0;  // Use u64 for the final result as well
+                //     for val in rx {
+                    //         total_ans = total_ans + val;
+                    //         println!("val found: {}", val);
+                    //     }
+                    
+                    //     println!("Ans is {}", total_ans);
+                    // }
+                    
+// ------------------------------------------------------------------------------------------------------
 
-    // Spawn multiple producer threads
-    for i in 0..10 {
-        let producer = tx.clone();
-        thread::spawn(move || {
-            let mut ans: u64 = 0;  // Use u64 to avoid overflow
-            for j in 0..100_000 {
-                ans = ans + (i * 100_000 + j) as u64;  // Cast to u64
-            }
-            producer.send(ans).unwrap();  // Send the result to the channel
-        });
-    }
-drop(tx);
-    // Collect and sum the results from all producer threads
-    let mut total_ans: u64 = 0;  // Use u64 for the final result as well
-    for val in rx {
-        total_ans = total_ans + val;
-        println!("val found: {}", val);
-    }
-
-    println!("Ans is {}", total_ans);
-}
